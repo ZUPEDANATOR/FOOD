@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Eats - Fast Food for Fast Minds</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header-image {
+            width: 100px; 
+            height: 100px;
+            margin: 0 auto 15px;
+            display: block;
+            border-radius: 50%; 
+            border: 3px solid white; 
+            object-fit: cover; 
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: 1.2em;
+        }
+        nav {
+            background-color: #d71414;
+            padding: 15px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 0;
+            flex-wrap: wrap;
+        }
+        .feature {
+            width: 250px;
+            text-align: center;
+            margin: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <img src="main logo.jpg" alt="Campus Eats Logo" class="header-image">
+        <div class="logo">CAMPUS-EATS</div>
+        <div class="tagline">FAST FOOD FOR FAST MINDS</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+
+        <video autoplay muted loop class="hero-video">
+            <source src="pulse.mp4" type="video/mp4">
+
+            <img src="main logo.jpg" alt="Campus Food Background">
+        </video>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1>Hungry? We've Got You Covered</h1>
+            <p>Delicious campus food delivered right to your lecture hall, library, or dorm</p>
+            <a href="menu.html" class="btn">Order Now</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <h3>Fast Delivery</h3>
+            <p>Get your food quickly between classes</p>
+        </div>
+        <div class="feature">
+            <h3>Affordable Prices</h3>
+            <p>Student-friendly prices for student budgets</p>
+        </div>
+        <div class="feature">
+            <h3>Local Flavors</h3>
+            <p>Authentic South African campus cuisine</p>
+        </div>
+        <div class="feature">
+            <h3>Skip the Queue</h3>
+            <p>No more waiting in long lunch lines</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Campus Eats. All rights reserved.</p>
+        <p>By Lebogang Malatjie</p>
+    </footer>
+</body>
+</html>

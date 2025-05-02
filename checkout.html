@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Campus Eats</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        nav {
+            background-color: #333;
+            padding: 15px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .checkout-container {
+            display: flex;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .delivery-details {
+            flex: 2;
+            margin-right: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .order-summary {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .order-total {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2em;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .place-order-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .delivery-options {
+            margin-top: 20px;
+        }
+        .delivery-option {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CAMPUS-EATS</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+    <div class="checkout-container">
+        <div class="delivery-details">
+            <h2>Delivery Details</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryLocation">Delivery Location</label>
+                    <select id="deliveryLocation" name="deliveryLocation" required>
+                        <option value="">Select delivery location</option>
+                        <option value="library">Main Library</option>
+                        <option value="science">Science Building</option>
+                        <option value="arts">Arts Building</option>
+                        <option value="residence">Student Residence</option>
+                        <option value="other">Other (specify below)</option>
+                    </select>
+                </div>
+                <div class="form-group" id="otherLocationGroup" style="display: none;">
+                    <label for="otherLocation">Specify Location</label>
+                    <input type="text" id="otherLocation" name="otherLocation">
+                </div>
+                <div class="form-group">
+                    <label for="deliveryNotes">Delivery Notes (Optional)</label>
+                    <textarea id="deliveryNotes" name="deliveryNotes" rows="3"></textarea>
+                </div>
+                <div class="delivery-options">
+                    <h3>Delivery Options</h3>
+                    <div class="delivery-option">
+                        <input type="radio" id="standard" name="deliveryOption" value="standard" checked>
+                        <label for="standard">Standard Delivery (30-45 min) - R15.00</label>
+                    </div>
+                    <div class="delivery-option">
+                        <input type="radio" id="express" name="deliveryOption" value="express">
+                        <label for="express">Express Delivery (15-25 min) - R25.00</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="order-items">
+                <!-- Order items will be added here dynamically -->
+            </div>
+            <div class="order-total">
+                Total: R<span id="order-total">0.00</span>
+            </div>
+            <button class="place-order-btn" id="place-order-btn">Place Order</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Campus Eats. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = JSON.parse(localStorage.getItem('campusEatsCart')) || [];
+            const orderItemsEl = document.getElementById('order-items');
+            const orderTotalEl = document.getElementById('order-total');
+            const placeOrderBtn = document.getElementById('place-order-btn');
+            const deliveryLocation = document.getElementById('deliveryLocation');
+            const otherLocationGroup = document.getElementById('otherLocationGroup');
+            
+            // Show/hide other location field
+            deliveryLocation.addEventListener('change', function() {
+                if (this.value === 'other') {
+                    otherLocationGroup.style.display = 'block';
+                } else {
+                    otherLocationGroup.style.display = 'none';
+                }
+            });
+            
+            // Display order items
+            if (cart.length === 0) {
+                orderItemsEl.innerHTML = '<p>No items in your order</p>';
+                orderTotalEl.textContent = '0.00';
+                placeOrderBtn.disabled = true;
+                return;
+            }
+            
+            let itemsHtml = '';
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                itemsHtml += `
+                    <div class="order-item">
+                        <div>
+                            <h4>${item.name}</h4>
+                            <p>${item.quantity} x R${item.price.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            R${itemTotal.toFixed(2)}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Add delivery fee
+            const deliveryFee = 15.00; // Default to standard delivery
+            const total = subtotal + deliveryFee;
+            
+            itemsHtml += `
+                <div class="order-item">
+                    <div>Subtotal</div>
+                    <div>R${subtotal.toFixed(2)}</div>
+                </div>
+                <div class="order-item">
+                    <div>Delivery Fee</div>
+                    <div>R${deliveryFee.toFixed(2)}</div>
+                </div>
+            `;
+            
+            orderItemsEl.innerHTML = itemsHtml;
+            orderTotalEl.textContent = total.toFixed(2);
+            
+            // Update delivery fee when option changes
+            document.querySelectorAll('input[name="deliveryOption"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const deliveryFee = this.value === 'express' ? 25.00 : 15.00;
+                    const total = subtotal + deliveryFee;
+                    
+                    // Update delivery fee display
+                    const feeElement = document.querySelector('.order-item:last-child div:last-child');
+                    feeElement.textContent = `R${deliveryFee.toFixed(2)}`;
+                    
+                    // Update total
+                    orderTotalEl.textContent = total.toFixed(2);
+                });
+            });
+            
+            // Place order button
+            placeOrderBtn.addEventListener('click', function() {
+                const form = document.getElementById('checkoutForm');
+                if (!form.checkValidity()) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                // In a real app, this would send the order to a server
+                alert('Order placed successfully! Thank you for using Campus Eats.');
+                localStorage.removeItem('campusEatsCart');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

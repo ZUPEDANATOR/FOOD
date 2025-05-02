@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Campus Eats</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header-image {
+            width: 100px; 
+            height: 100px;
+            margin: 0 auto 15px;
+            display: block;
+            border-radius: 50%; 
+            border: 3px solid white; 
+            object-fit: cover; 
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        nav {
+            background-color: #333;
+            padding: 15px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .menu {
+            flex: 3;
+            margin-right: 20px;
+        }
+        .cart {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        .vendor-section {
+            margin-bottom: 40px;
+        }
+        .vendor-header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .food-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .food-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .food-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .food-item h3 {
+            margin: 10px 0 5px;
+        }
+        .food-item p {
+            color: #666;
+            margin: 5px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 10px 0;
+        }
+        .add-to-cart {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-total {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .checkout-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="main logo.jpg" alt="Campus Eats Logo" class="header-image">
+        <div class="logo">CAMPUS-EATS</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="menu">
+            <div class="vendor-section">
+                <div class="vendor-header">
+                    <h2>Mpho's Food Corner</h2>
+                </div>
+                <div class="food-items">
+                    <div class="food-item">
+                        <img src="bunny-chow.jpg" alt="Bunny Chow">
+                        <h3>Bunny Chow</h3>
+                        <p>Delicious curry served in a hollowed-out loaf of bread</p>
+                        <div class="price">R45.00</div>
+                        <button class="add-to-cart" data-id="1" data-name="Bunny Chow" data-price="45.00">Add to Cart</button>
+                    </div>
+                    <div class="food-item">
+                        <img src="pap and stew.jpg" alt="Pap and Beef Stew">
+                        <h3>Pap and Beef Stew</h3>
+                        <p>Hearty traditional meal with maize porridge and rich beef stew</p>
+                        <div class="price">R50.00</div>
+                        <button class="add-to-cart" data-id="2" data-name="Pap and Beef Stew" data-price="50.00">Add to Cart</button>
+                    </div>
+                    <div class="food-item">
+                        <img src="boerie-rolls.jpg" alt="Boerie Roll">
+                        <h3>Boerie Roll</h3>
+                        <p>Flame-grilled boerewors in a fresh roll with toppings</p>
+                        <div class="price">R35.00</div>
+                        <button class="add-to-cart" data-id="3" data-name="Boerie Roll" data-price="35.00">Add to Cart</button>
+                    </div>
+                    <div class="food-item">
+                        <img src="magwinya.jpg" alt="Vetkoek">
+                        <h3>Vetkoek with Mince</h3>
+                        <p>Fried dough bread filled with savory mince</p>
+                        <div class="price">R30.00</div>
+                        <button class="add-to-cart" data-id="4" data-name="Vetkoek with Mince" data-price="30.00">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vendor-section">
+                <div class="vendor-header">
+                    <h2>Pulse Cafeteria</h2>
+                </div>
+                <div class="food-items">
+                    <div class="food-item">
+                        <img src="burger.jpg" alt="Campus Burger">
+                        <h3>Campus Burger</h3>
+                        <p>Juicy beef patty with cheese, lettuce, and special sauce</p>
+                        <div class="price">R40.00</div>
+                        <button class="add-to-cart" data-id="5" data-name="Campus Burger" data-price="40.00">Add to Cart</button>
+                    </div>
+                    <div class="food-item">
+                        <img src="Chicken-Wrap.jpg" alt="Chicken Wrap">
+                        <h3>Chicken Wrap</h3>
+                        <p>Grilled chicken with veggies in a soft tortilla</p>
+                        <div class="price">R38.00</div>
+                        <button class="add-to-cart" data-id="6" data-name="Chicken Wrap" data-price="38.00">Add to Cart</button>
+                    </div>
+                    <div class="food-item">
+                        <img src="Simply-Recipes-Easy-Greek-Salad.jpg" alt="Greek Salad">
+                        <h3>Greek Salad</h3>
+                        <p>Fresh veggies with feta cheese and olives</p>
+                        <div class="price">R45.00</div>
+                        <button class="add-to-cart" data-id="7" data-name="Greek Salad" data-price="45.00">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-items">
+                <p>Your cart is empty</p>
+            </div>
+            <div class="cart-total">
+                Total: R<span id="cart-total">0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Campus Eats. All rights reserved.</p>
+        <p>By Lebogang Malatjie</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let cart = [];
+            const cartItemsEl = document.getElementById('cart-items');
+            const cartTotalEl = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    const existingItem = cart.find(item => item.id === id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id,
+                            name,
+                            price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            function updateCart() {
+                if (cart.length === 0) {
+                    cartItemsEl.innerHTML = '<p>Your cart is empty</p>';
+                    cartTotalEl.textContent = '0.00';
+                    return;
+                }
+                
+                let itemsHtml = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    itemsHtml += `
+                        <div class="cart-item">
+                            <div>
+                                <h4>${item.name}</h4>
+                                <p>R${item.price.toFixed(2)} x ${item.quantity}</p>
+                            </div>
+                            <div>
+                                R${itemTotal.toFixed(2)}
+                                <button class="remove-item" data-id="${item.id}">×</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                cartItemsEl.innerHTML = itemsHtml;
+                cartTotalEl.textContent = total.toFixed(2);
+                
+
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    });
+                });
+            }
+            
+
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Your cart is empty');
+                    return;
+                }
+                localStorage.setItem('campusEatsCart', JSON.stringify(cart));
+                window.location.href = 'checkout.html';
+            });
+        });
+    </script>
+</body>
+</html>
